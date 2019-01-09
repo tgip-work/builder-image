@@ -28,19 +28,19 @@ ADD https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-Linux-x86_
 RUN chmod +x /usr/local/bin/envsubst
 
 # Kubectl for AWS EKS
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.11/2018-12-06/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 RUN chmod +x /usr/local/bin/kubectl
 
 # AWS IAM Authenticator.
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.11/2018-12-06/bin/linux/amd64/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 RUN chmod +x /usr/local/bin/aws-iam-authenticator
 
 # Install GIT
 RUN apk add --no-cache git && \
     rm -rf /var/cache/apk/*
 
-# Helm 2.10.0 with S3 plugin
-ADD https://storage.googleapis.com/kubernetes-helm/helm-v2.10.0-linux-amd64.tar.gz helm-linux-amd64.tar.gz
+# Helm 2.11.0 with S3 plugin
+ADD https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.gz helm-linux-amd64.tar.gz
 RUN tar -zxvf helm-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
     helm init --client-only && \
