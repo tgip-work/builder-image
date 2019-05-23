@@ -29,6 +29,14 @@ plus additional tools (depends on branch)
 Master branch may not be stable all the time due to ongoing development activitites.
 Therefore it is recommended to use branches that are *bound* to fixed versions of the tools.
 
+## Branch k8s1.11.9-helm2.11.0-docker18.06
+
+`docker pull tgip/builder-image:k8s1.11.9-helm2.11.0-docker18.06`
+
+- kubectl 1.11.9 with aws-iam-authenticator 1.11.9
+- Helm 2.11.0 with helm S3 plugin
+- Docker CLI 18.06
+
 ## Branch k8s1.11.5-helm2.11.0-docker18.06
 
 `docker pull tgip/builder-image:k8s1.11.5-helm2.11.0-docker18.06`
