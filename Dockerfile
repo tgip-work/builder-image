@@ -18,10 +18,11 @@ RUN apk add --no-cache python3 && \
 
 
 RUN apk --no-cache update && \
-    apk --no-cache add curl make bash ca-certificates groff less build-base && \
+    apk --no-cache add curl make bash ca-certificates groff less build-base wget && \
     pip3 install --upgrade awscli urllib3 && \
-    pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} docker-compose wget && \
-    rm -rf /var/cache/apk/*
+    pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} wget && \
+    rm -rf /var/cache/apk/* && \
+    aws --version
 
 # envsubst
 ADD https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-Linux-x86_64 /usr/local/bin/envsubst
