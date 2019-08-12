@@ -6,7 +6,7 @@ LABEL description="An Alpine based docker image contains a good combination of c
  to build, package as docker image, login and push to AWS ECR, AWS authentication and all Kuberentes staff. \
  tools included: Docker, AWS-CLI, Kubectl, Helm, Curl, Python, Envsubst, Python, Pip, Git, Bash, AWS-IAM-Auth."
 
-ENV AWS_CLI_VERSION 1.16.83
+ENV AWS_CLI_VERSION 1.16.210
 
 RUN apk add --no-cache python3 && \
     python3 -m ensurepip && \
@@ -18,21 +18,22 @@ RUN apk add --no-cache python3 && \
 
 
 RUN apk --no-cache update && \
-    apk --no-cache add curl make bash ca-certificates groff less && \
+    apk --no-cache add curl make bash ca-certificates groff less build-base wget && \
     pip3 install --upgrade awscli urllib3 && \
-    pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} docker-compose wget && \
-    rm -rf /var/cache/apk/*
+    pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} wget && \
+    rm -rf /var/cache/apk/* && \
+    aws --version
 
 # envsubst
 ADD https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-Linux-x86_64 /usr/local/bin/envsubst
 RUN chmod +x /usr/local/bin/envsubst
 
 # Kubectl for AWS EKS
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.9/2019-03-27/bin/linux/amd64/kubectl /usr/local/bin/kubectl
+ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 RUN chmod +x /usr/local/bin/kubectl
 
 # AWS IAM Authenticator.
-ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.9/2019-03-27/bin/linux/amd64/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
+ADD https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 RUN chmod +x /usr/local/bin/aws-iam-authenticator
 
 # Install GIT

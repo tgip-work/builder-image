@@ -8,12 +8,12 @@ The image is mainly used as a builder images while creating CICD pipelines.
 
 Automated built docker images are provided at https://hub.docker.com/r/tgip/builder-image/
 
-# Tools 
+# Tools
 
 |Tool                   |Version        |Description                                                                               |
 |-----------------------|---------------|------------------------------------------------------------------------------------------|
 |Docker Engine          |18.06          |Docker image containing docker engine to offer Docker inside Docker (DinD)                |
-|AWS CLI                |1.16.83        |AWS commandline tools for managing simple infrastructure tasks                            |
+|AWS CLI                |1.16.210       |AWS commandline tools for managing simple infrastructure tasks                            |
 |Python                 |3.6.6          |Usefull scripting language and also a common rerequisite for many other tools             |
 |Pip                    |18.1           |Python package manager used to install many libraries and other tools i.e. aws-cli        |
 |cUrl                   |7.61.1         |Commandline professional http(s) client tool                                              |
@@ -28,6 +28,14 @@ plus additional tools (depends on branch)
 
 Master branch may not be stable all the time due to ongoing development activitites.
 Therefore it is recommended to use branches that are *bound* to fixed versions of the tools.
+
+## Branch k8s1.13.7-helm2.11.0-docker18.06
+
+`docker pull tgip/builder-image:k8s1.13.7-helm2.11.0-docker18.06`
+
+- kubectl 1.13.7 with aws-iam-authenticator 1.13.7
+- Helm 2.11.0 with helm S3 plugin
+- Docker CLI 18.06
 
 ## Branch k8s1.11.9-helm2.11.0-docker18.06
 
@@ -52,4 +60,3 @@ Therefore it is recommended to use branches that are *bound* to fixed versions o
 - kubectl 1.10.3 with aws-iam-authenticator 1.10.3
 - Helm 2.10.0 with helm S3 plugin
 - Docker CLI 18.06
-
