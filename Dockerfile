@@ -18,7 +18,8 @@ RUN apk add --no-cache python3 && \
 
 
 RUN apk --no-cache update && \
-    apk --no-cache add curl make bash ca-certificates groff less build-base wget && \
+    apk --no-cache add curl make bash ca-certificates groff less build-base wget libc6-compat && \
+    apk --no-cache add openjdk11-jre --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
     pip3 install --upgrade awscli urllib3 && \
     pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} wget && \
     rm -rf /var/cache/apk/* && \
@@ -45,7 +46,7 @@ ADD https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-linux-amd64.tar.
 RUN tar -zxvf helm-linux-amd64.tar.gz && \
     mv linux-amd64/helm /usr/local/bin/helm && \
     helm init --client-only && \
-    helm plugin install https://github.com/hypnoglow/helm-s3.git
+    helm plugin install https://github.com/hypnoglow/helm-s3.git --version v0.8.0
 
 ENV LOG=file
 CMD []
