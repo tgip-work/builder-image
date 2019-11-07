@@ -18,8 +18,8 @@ RUN apk add --no-cache python3 && \
 
 
 RUN apk --no-cache update && \
-    apk --no-cache add curl make bash ca-certificates groff less build-base wget libc6-compat gcompat && \
-    apk --no-cache add openjdk11-jre --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
+    apk --no-cache add curl make bash ca-certificates groff less build-base wget libc6-compat gcompat git-lfs openssh gettext jq && \
+    apk --no-cache add openjdk11-jdk --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
     pip3 install --upgrade awscli urllib3 && \
     pip3 --no-cache-dir install awscli==${AWS_CLI_VERSION} wget && \
     rm -rf /var/cache/apk/* && \
