@@ -23,7 +23,6 @@ Automated built docker images are provided at https://hub.docker.com/r/tgip/buil
 
 plus additional tools (depends on branch)
 
-
 # Branches
 
 Master branch may not be stable all the time due to ongoing development activitites.
