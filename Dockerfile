@@ -25,6 +25,14 @@ RUN apk --no-cache update && \
     rm -rf /var/cache/apk/* && \
     aws --version
 
+# yq
+ADD https://github.com/mikefarah/yq/releases/download/3.2.1/yq_linux_amd64 /usr/local/bin/yq
+RUN chmod +x /usr/local/bin/yq
+
+# Jfrog CLI
+RUN curl -fL https://getcli.jfrog.io | sh && \
+    mv jfrog /usr/local/bin
+
 # envsubst
 ADD https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-Linux-x86_64 /usr/local/bin/envsubst
 RUN chmod +x /usr/local/bin/envsubst
